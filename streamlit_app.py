@@ -139,7 +139,8 @@ st.dataframe(core.format_table(stats), width="stretch")
 st.caption("Monthly simple returns, Jan 2006 – Dec 2025. Strategy and static mix net of the chosen cost; "
            "60/40 benchmark gross. Sharpe, alpha and information ratio use excess returns over the 3-month "
            "T-bill (^IRX). Alpha and beta from an OLS regression on the 60/40 excess return; beta is not "
-           "annualized. Means ×12, volatilities ×√12.")
+           "annualized. Means ×12, volatilities ×√12. Blank cells for the 60/40: it is the reference portfolio, "
+           "so its beta is 1 and its alpha 0 by definition, and the information ratio is not defined.")
 
 with st.expander("Method, data and limitations"):
     st.markdown(f"""

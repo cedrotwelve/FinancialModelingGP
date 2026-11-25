@@ -3,7 +3,7 @@
 Group assignment for **2270 Financial Modeling**: an investor prospectus for a simple, rules-based portfolio,
 backtested in Python, with an interactive Streamlit app.
 
-- **Streamlit app:** _[URL, to be added after deployment]_
+- **Streamlit app:** https://financialmodelinggp-8mn85ltyh3prwzyudx7eqd.streamlit.app/
 - **Notebook:** [`FM_trend_portfolio.ipynb`](FM_trend_portfolio.ipynb) ·
   [open in Colab](https://colab.research.google.com/github/cedrotwelve/FinancialModelingGP/blob/main/FM_trend_portfolio.ipynb)
 
