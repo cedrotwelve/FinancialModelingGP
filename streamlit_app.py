@@ -4,12 +4,18 @@ All calculations come from backtest_core.py, which contains the same functions a
 FM_trend_portfolio.ipynb. With the default settings the app reproduces the notebook's numbers.
 Run locally with:  streamlit run streamlit_app.py
 """
+import importlib
+
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
 import backtest_core as core
+
+# Streamlit Cloud keeps imported modules in memory across code updates: reload the engine so the app
+# always runs the backtest_core.py currently in the repository.
+core = importlib.reload(core)
 
 # ---- Fixed assumptions: identical to Section 1 of the notebook -------------------
 BASE_WEIGHTS  = {"SPY": 0.25, "EFA": 0.25, "IEF": 0.25, "GLD": 0.25}
