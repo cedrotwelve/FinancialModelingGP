@@ -140,8 +140,9 @@ def run_backtest(prices, weight_fn, rebalance="M", tc_bps=0.0, rf=None, start=No
 
 
 def run_all(prices, rf, base_weights, bench_weights, ma_window=10, use_filter=True,
-            tc_bps=10.0, bench_tc_bps=0.0, rebalance="M", start=None):
-    """Runs the strategy, the unfiltered static mix and the benchmark on the same sample.
+            tc_bps=10.0, bench_tc_bps=0.0, rebalance="M", start=None, ref_weights=None):
+    """Runs the strategy, the unfiltered static mix, the benchmark and (optionally) a reference
+    portfolio on the same sample. Benchmark and reference are shown gross of costs.
     This is the single entry point used by both the notebook and the Streamlit app."""
     if use_filter and start is not None:
         n_hist = int(prices.index.searchsorted(pd.Timestamp(start)))   # month-ends up to the first decision
@@ -154,8 +155,12 @@ def run_all(prices, rf, base_weights, bench_weights, ma_window=10, use_filter=Tr
                              rebalance, tc_bps, rf, start)
     bench, _ = run_backtest(prices, make_fixed_rule(bench_weights),
                             rebalance, bench_tc_bps, rf, start)
-    return {"strategy": strat, "weights": weights, "static": static,
-            "benchmark": bench, "rf": rf.reindex(strat.index)}
+    out = {"strategy": strat, "weights": weights, "static": static,
+           "benchmark": bench, "rf": rf.reindex(strat.index)}
+    if ref_weights is not None:
+        out["reference"], _ = run_backtest(prices, make_fixed_rule(ref_weights),
+                                           rebalance, bench_tc_bps, rf, start)
+    return out
 
 
 def perf_stats(r, rf, bench=None, ppy=12):

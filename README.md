@@ -14,7 +14,7 @@ backtested in Python, with an interactive Streamlit app.
 | Target client | Retail investor aged 50–60, saving for retirement over 5–10 years; wants to beat inflation but would sell in panic after a ~40% fall |
 | Assets | SPY (US equities), EFA (developed ex-US equities), IEF (7–10y US Treasuries), GLD (gold); cash in 3-month T-bills (`^IRX`) |
 | Rule | 25% in each asset. At every month-end, an asset priced below its 10-month simple moving average moves to cash for the next month (Faber, 2007) |
-| Benchmarks | 60/40 SPY/IEF (alpha, beta, information ratio) and the same 25% mix without the filter |
+| Benchmarks | 60/40 SPY/IEF (alpha, beta, information ratio) and the same 25% mix without the filter; S&P 500 (SPY) shown as a reference only |
 | Sample | Monthly returns Jan 2006 – Dec 2025; 2005 used only to compute the first moving averages |
 
 ## Files
